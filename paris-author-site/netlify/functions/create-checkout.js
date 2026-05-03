@@ -31,8 +31,6 @@ exports.handler = async function (event) {
   customer_creation: "always",
 
   // 👇 OPTIONAL: collect name
-  customer_update: {
-    name: "auto"
   },
 
   line_items: [
