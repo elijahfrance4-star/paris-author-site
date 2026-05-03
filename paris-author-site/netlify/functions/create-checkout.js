@@ -25,22 +25,32 @@ exports.handler = async function (event) {
     }
 
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: selected.name
-            },
-            unit_amount: selected.price
-          },
-          quantity: 1
-        }
-      ],
-      success_url: `${process.env.URL}/success.html`,
-      cancel_url: `${process.env.URL}/preorder.html`
-    });
+  mode: "payment",
+
+  // 👇 THIS CAPTURES EMAIL AUTOMATICALLY
+  customer_creation: "always",
+
+  // 👇 OPTIONAL: collect name
+  customer_update: {
+    name: "auto"
+  },
+
+  line_items: [
+    {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: selected.name
+        },
+        unit_amount: selected.price
+      },
+      quantity: 1
+    }
+  ],
+
+  success_url: `${process.env.URL}/success.html`,
+  cancel_url: `${process.env.URL}/preorder.html`
+});
 
     return {
       statusCode: 200,
