@@ -30,9 +30,6 @@ exports.handler = async function (event) {
   // 👇 THIS CAPTURES EMAIL AUTOMATICALLY
   customer_creation: "always",
 
-  // 👇 OPTIONAL: collect name
-  },
-
   line_items: [
     {
       price_data: {
