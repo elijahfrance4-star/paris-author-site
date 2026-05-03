@@ -46,6 +46,9 @@
     <div class="btn-row">
       <a href="preorder.html" class="btn primary">Preorder</a>
       <a href="books.html" class="btn secondary">Back To Books</a>
+      <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); checkout('summer-kings')">
+  Buy This Book - $25.99
+</button>
     </div>
   </div>
 </main>
@@ -55,5 +58,24 @@
   <p>Paris M. France</p>
 </footer>
 
+<script>
+async function checkout(book) {
+  const response = await fetch("/.netlify/functions/create-checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ book })
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Checkout error: " + data.error);
+  }
+}
+</script>
 </body>
 </html>

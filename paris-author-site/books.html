@@ -41,8 +41,13 @@
         <h4>Book 1</h4>
         <p>Dark romance tragedy. Emotional. Intimate. Painful. Built around the words love never got to say.</p>
         <span class="btn primary">Open Book Page</span>
+        <button class="btn primary" onclick="checkout('if-love')">
+  Buy Now - $15.99
+</button>
       </div>
-    </a>
+   <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); checkout('if-love')">
+  Buy Now - $15.99
+</button>
 
     <a class="book-card" href="summer-kings.html">
       <img class="book-cover" src="images/leek.png" alt="Summer Kings cover" />
@@ -51,8 +56,13 @@
         <h4>Leek</h4>
         <p>A tragic street drama about Leek and Nyia and the crew struggling with loyalty, ambition, betrayal, and survival in there chance to finally take over the city.</p>
         <span class="btn primary">Open Book Page</span>
+        <button class="btn primary" onclick="checkout('summer-kings')">
+  Buy Now - $25.99
+</button>
       </div>
-    </a>
+    <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); checkout('summer-kings')">
+  Buy Now - $25.99
+</button>
   </div>
 </main>
 
@@ -61,5 +71,24 @@
   <p>Official Book Store</p>
 </footer>
 
+<script>
+async function checkout(book) {
+  const response = await fetch("/.netlify/functions/create-checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ book })
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Checkout error: " + data.error);
+  }
+}
+</script>
 </body>
 </html>
