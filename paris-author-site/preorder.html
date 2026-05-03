@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preorder | Paris M. France</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<script>
+async function checkout(book) {
+  const response = await fetch("/.netlify/functions/create-checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ book })
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Checkout error: " + data.error);
+  }
+}
+</script>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">Paris M. <span>France</span></a>
+  <div class="menu-wrap">
+    <button class="menu-button">Menu</button>
+    <div class="dropdown">
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="programs.html">Program List</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="subscriptions.html">My Subscriptions</a>
+      <a href="ways-to-pay.html">Ways to Pay</a>
+      <a href="preorder.html">Pre-order</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div>
+    <div class="kicker">Author Academy</div>
+    <h1>Pre-order</h1>
+    <p>Pre-order your copies of upcoming books and be the first to know when they're available.</p>
+  </div>
+ <button class="btn primary" onclick="checkout('if-love')">
+  Preorder If Love Could Talk - $4.99
+</button>
+
+<button class="btn primary" onclick="checkout('summer-kings')">
+  Preorder Summer Kings - $9.99
+</button>
+</header>
+
+<main class="section page-shell">
+  <div class="card-grid">
+    <div class="card">
+      <h3>Upcoming Book Preorders</h3>
+      <p>Pre-order Summer Kings: Leek now!</p>
+    </div>
+    <div class="card">
+      <h3>Exclusive Pre-order Content</h3>
+      <p>Pre-order now to receive exclusive content and early access to special edition copies.</p>
+    </div>
+  </div>
+  <script>
+async function checkout(book) {
+  const response = await fetch("/.netlify/functions/create-checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ book })
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Checkout error: " + data.error);
+  }
+}
+</script>
+</main>
