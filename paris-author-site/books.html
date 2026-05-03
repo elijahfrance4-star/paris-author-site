@@ -20,9 +20,15 @@
       <a href="subscriptions.html">My Subscriptions</a>
       <a href="ways-to-pay.html">Ways to Pay</a>
       <a href="preorder.html">Pre-order</a>
+      <a href="cart.html" class="cart-link">
+  Cart (<span id="cart-count">0</span>)
+</a>
     </div>
   </div>
 </nav>
+<a href="cart.html" class="btn secondary">
+  View Cart
+</a>
 
 <header class="page-hero">
   <div>
@@ -41,7 +47,7 @@
         <h4>Book 1</h4>
         <p>Dark romance tragedy. Emotional. Intimate. Painful. Built around the words love never got to say.</p>
         <span class="btn primary">Open Book Page</span>
-        
+
         <button class="btn primary" onclick="checkout('if-love')">
   Buy Now - $15.99
 </button>
@@ -91,6 +97,12 @@ async function checkout(book) {
     alert("Checkout error: " + data.error);
   }
 }
+
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
 </script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -19,10 +19,14 @@
       <a href="subscriptions.html">My Subscriptions</a>
       <a href="ways-to-pay.html">Ways to Pay</a>
       <a href="preorder.html">Pre-order</a>
-    </div>
+      <a href="cart.html" class="cart-link">
+  Cart (<span id="cart-count">0</span>)
+</a>
   </div>
 </nav>
-
+<a href="cart.html" class="btn secondary">
+  View Cart
+</a>
 <main class="book-hero">
   <div class="book-hero-cover-wrap">
     <img class="book-hero-cover" src="images/if-love.png" alt="If Love Could Talk cover" />
@@ -46,7 +50,8 @@
       <a href="preorder.html" class="btn primary">Preorder</a>
       <a href="books.html" class="btn secondary">Back To Books</a>
       <button class="btn primary" onclick="checkout('if-love')">
-  Buy This Book - $15.99
+  <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); addToCart('if-love', 'If Love Could Talk', 15.99)">
+  Add to Cart - $15.99
 </button>
     </div>
   </div>
@@ -75,6 +80,13 @@ async function checkout(book) {
     alert("Checkout error: " + data.error);
   }
 }
+
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
 </script>
+<script src="script.js"></script>
 </body>
+<a href="cart.html" class="btn secondary">View Cart</a>
 </html>

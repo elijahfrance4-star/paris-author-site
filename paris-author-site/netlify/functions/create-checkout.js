@@ -2,50 +2,52 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async function (event) {
   try {
-    const { book } = JSON.parse(event.body || "{}");
+    const { cart } = JSON.parse(event.body || "{}");
 
     const products = {
       "if-love": {
-        name: "If Love Could Talk - Preorder",
+        name: "If Love Could Talk",
         price: 499
       },
       "summer-kings": {
-        name: "Summer Kings - Preorder",
+        name: "Summer Kings",
         price: 999
       }
     };
 
-    const selected = products[book];
-
-    if (!selected) {
+    if (!cart || cart.length === 0) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Invalid book selected" })
+        body: JSON.stringify({ error: "Cart is empty" })
       };
     }
 
-    const session = await stripe.checkout.sessions.create({
-  mode: "payment",
+    const line_items = cart.map(item => {
+      const product = products[item.bookId];
 
-  // 👇 THIS CAPTURES EMAIL AUTOMATICALLY
-  customer_creation: "always",
+      if (!product) {
+        throw new Error("Invalid product in cart");
+      }
 
-  line_items: [
-    {
-      price_data: {
-        currency: "usd",
-        product_data: {
-          name: selected.name
+      return {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: product.name
+          },
+          unit_amount: product.price
         },
-        unit_amount: selected.price
-      },
-      quantity: 1
-    }
-  ],
+        quantity: item.quantity || 1
+      };
+    });
 
-  success_url: `${process.env.URL}/success.html`,
-  cancel_url: `${process.env.URL}/preorder.html`
-});
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      customer_creation: "always",
+      line_items,
+      success_url: `${process.env.URL}/success.html`,
+      cancel_url: `${process.env.URL}/cart.html`
+    });
 
     return {
       statusCode: 200,
