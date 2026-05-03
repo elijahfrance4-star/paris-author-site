@@ -7,11 +7,11 @@ exports.handler = async function (event) {
     const products = {
       "if-love": {
         name: "If Love Could Talk",
-        price: 499
+        price: 1599
       },
       "summer-kings": {
         name: "Summer Kings",
-        price: 999
+        price: 2599
       }
     };
 
