@@ -5,8 +5,8 @@ exports.handler = async (event) => {
     const { priceId } = JSON.parse(event.body || "{}");
 
     const allowedPrices = [
-      process.env.price_1TT34DHc9WckJ9kJIjRd5m9X 
-      process.env.price_1TT34lHc9WckJ9kJJeqy0fCB    
+      process.env.price_1TT34DHc9WckJ9kJIjRd5m9X,
+      process.env.price_1TT34lHc9WckJ9kJJeqy0fCB
     ];
 
     if (!allowedPrices.includes(priceId)) {
@@ -15,6 +15,8 @@ exports.handler = async (event) => {
         body: JSON.stringify({ error: "Invalid subscription price." })
       };
     }
+
+    const baseUrl = process.env.DEPLOY_PRIME_URL || process.env.SITE_URL;
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
@@ -28,8 +30,8 @@ exports.handler = async (event) => {
       metadata: {
         price_id: priceId
       },
-      success_url: `${process.env.URL}/success.html`,
-      cancel_url: `${process.env.URL}/subscriptions.html`
+      success_url: `${baseUrl}/success.html`,
+      cancel_url: `${baseUrl}/subscriptions.html`
     });
 
     return {

@@ -121,6 +121,3 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   updateCartCount();
 });
-
-document.addEventListener("DOMContentLoaded", loadCart);
-
