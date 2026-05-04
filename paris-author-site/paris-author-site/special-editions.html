@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members | Paris M. France</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+(async () => {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+<body>
+<div id="navbar-placeholder"></div>
+
+<header class="page-hero">
+  <div>
+    <div class="kicker">Premium Members</div>
+    <h1>Special Editions</h1>
+    <p>Special edition books and collector drops for premium members.</p>
+  </div>
+</header>
+
+<main class="section page-shell">
+  <div class="card-grid">
+    <div class="card">
+      <h3>Special Editions Coming Soon</h3>
+      <p>M List members will receive free special editions of each book when available.</p>
+    </div>
+  </div>
+</main>
+ <script src="script.js"></script>
+ <script src="navbar.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+<!-- SUPABASE FIRST -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<!-- THEN YOUR SITE SCRIPTS -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+ </body>
+ </html>

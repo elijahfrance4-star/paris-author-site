@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Paris M. France</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main class="auth-cinema-page">
+  <section class="auth-portal">
+
+    <div class="auth-left">
+      <div class="kicker">Member Access</div>
+      <h1>Enter The House</h1>
+      <p>
+        Your private gateway into House of France. Exclusive stories,
+        programs, drops, and member-only releases.
+      </p>
+
+      <div class="auth-perks">
+        <span>Exclusive Content</span>
+        <span>Private Drops</span>
+        <span>Member Access</span>
+      </div>
+    </div>
+
+    <div class="auth-box cinematic-auth">
+      <h2>Login</h2>
+
+      <input id="email" type="email" placeholder="Email">
+      <input id="password" type="password" placeholder="Password">
+
+      <button class="btn primary" onclick="login()">Enter</button>
+
+      <p class="auth-switch">
+        Don’t have access yet?
+        <a href="signup.html">Create account</a>
+      </p>
+    </div>
+
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+async function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    alert(error.message);
+  } else {
+    window.location.href = "members.html";
+  }
+}
+</script>
+
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+</body>
+</html>

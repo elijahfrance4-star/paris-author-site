@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join House of France | Paris M. France</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main class="signup-cinema-page">
+  <section class="signup-portal">
+
+    <div class="signup-left">
+      <div class="kicker">House of France</div>
+      <h1>Claim Your Seat</h1>
+      <p>
+        Step inside the private world of Paris M. France — where readers get early access,
+        exclusive stories, member drops, and the first look at what comes next.
+      </p>
+
+      <div class="signup-luxury-list">
+        <div>
+          <span>01</span>
+          <strong>Private Reader Access</strong>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>Exclusive Story Drops</strong>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>Early Book Releases</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup-box">
+      <span class="badge">Begin Your Membership</span>
+      <h2>Create Account</h2>
+      <p>Your House of France access starts here.</p>
+
+      <input id="email" type="email" placeholder="Email">
+      <input id="password" type="password" placeholder="Password">
+
+      <button class="btn primary" onclick="signup()">Create Account</button>
+
+      <p class="auth-switch">
+        Already a member?
+        <a href="login.html">Login</a>
+      </p>
+    </div>
+
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+async function signup() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Please enter your email and password.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Account created. Welcome to House of France.");
+    window.location.href = "members.html";
+  }
+}
+</script>
+<!-- YOUR FILES -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+<!-- SUPABASE FIRST -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<!-- THEN YOUR SITE SCRIPTS -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members | Paris M. France</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<button onclick="logout()">Logout Test</button>
+
+<!-- your page content above -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<header class="member-hero">
+  <div>
+    <div class="kicker">Members Area</div>
+    <h1>House of France</h1>
+    <p>Your private reader hub for stories, programs, special editions, and member-only updates.</p>
+  </div>
+</header>
+
+<main class="section page-shell">
+  <div class="member-card">
+
+   <a href="short-stories.html" class="member-card">
+      <h3>Short Stories</h3>
+      <p>Free short stories and exclusive drops for members.</p>
+    </a>
+
+    <a href="program-library.html" class="member-card">
+      <h3>Program Library</h3>
+      <p>Access writing programs, author resources, and creative lessons.</p>
+    </a>
+
+    <a href="special-editions.html" class="member-card">
+      <h3>Special Editions</h3>
+      <p>Collector editions, bonus material, and premium member releases.</p>
+    </a>
+
+  </div>
+</main>
+<!-- SUPABASE FIRST -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+
+<script>
+async function logout() {
+  await supabaseClient.auth.signOut();
+  window.location.href = "login.html";
+}
+</script>
+<!-- YOUR FILES AFTER -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+</body>
+</html>

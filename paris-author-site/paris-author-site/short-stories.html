@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members | Paris M. France</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+(async () => {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    window.location.href = "login.html";
+  }
+})();
+
+</script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<header class="member-hero">
+  <div>
+    <div class="kicker">Members Only</div>
+    <h1>Short Stories</h1>
+    <p>Exclusive short story drops for House of France members.</p>
+  </div>
+</header>
+
+<main class="section page-shell">
+  <div class="card-grid">
+    <div class="card">
+      <h3>Coming Soon</h3>
+      <p>Your first member short story drop will appear here.</p>
+    </div>
+  </div>
+</main>
+
+<!-- your page content above -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+ <script src="script.js"></script>
+ <script src="navbar.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+(async () => {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+})();
+</script>
+<!-- SUPABASE FIRST -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<!-- THEN YOUR SITE SCRIPTS -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+ </body>
+ </html>
