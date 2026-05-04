@@ -121,25 +121,3 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   updateCartCount();
 });
-
-document.addEventListener("DOMContentLoaded", loadCart);
-
-<script>
-async function subscribe(plan) {
-  const response = await fetch("/.netlify/functions/create-subscription", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ plan })
-  });
-
-  const data = await response.json();
-
-  if (data.url) {
-    window.location.href = data.url;
-  } else {
-    alert("Subscription error: " + data.error);
-  }
-}
-</script>

@@ -1,30 +1,47 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
-  const { priceId } = JSON.parse(event.body);
-
   try {
+    const { priceId } = JSON.parse(event.body || "{}");
+
+    const allowedPrices = [
+      process.env.price_1TT34DHc9WckJ9kJIjRd5m9X,
+      process.env.price_1TT34lHc9WckJ9kJJeqy0fCB
+    ];
+
+    if (!allowedPrices.includes(priceId)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Invalid subscription price." })
+      };
+    }
+
+    const baseUrl = process.env.DEPLOY_PRIME_URL || process.env.SITE_URL;
+
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       payment_method_types: ["card"],
       line_items: [
         {
           price: priceId,
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
-      success_url: "http://localhost:5500/success.html",
-      cancel_url: "http://localhost:5500/subscriptions.html",
+      metadata: {
+        price_id: priceId
+      },
+      success_url: `${baseUrl}/success.html`,
+      cancel_url: `${baseUrl}/subscriptions.html`
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ url: session.url }),
+      body: JSON.stringify({ url: session.url })
     };
   } catch (err) {
     return {
       statusCode: 500,
-      body: err.message,
+      body: JSON.stringify({ error: err.message })
     };
   }
 };
