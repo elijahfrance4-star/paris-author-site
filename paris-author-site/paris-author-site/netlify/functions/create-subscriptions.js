@@ -5,8 +5,8 @@ exports.handler = async (event) => {
     const { priceId } = JSON.parse(event.body || "{}");
 
     const allowedPrices = [
-      process.env.HOUSE_PRICE_ID,
-      process.env.M_LIST_PRICE_ID
+      process.env.price_1TT34DHc9WckJ9kJIjRd5m9X 
+      process.env.price_1TT34lHc9WckJ9kJJeqy0fCB    
     ];
 
     if (!allowedPrices.includes(priceId)) {
