@@ -17,6 +17,7 @@
     <p>
       Secure your copy early and be the first to experience new releases from Paris M. France.
     </p>
+    <a href="cart.html" class="btn secondary">View Cart</a>
   </div>
 </header>
 
@@ -28,8 +29,8 @@
       <h4>Book 1</h4>
       <p>Pre-order now and be first to experience this dark romance tragedy.</p>
 
-      <button class="btn primary" onclick="checkout('if-love')">
-        Preorder - $14.99
+      <button class="btn primary" onclick="addToCart('if-love', 'If Love Could Talk', 15.99)">
+        Add to Cart - $15.99
       </button>
     </div>
 
@@ -38,8 +39,8 @@
       <h4>Leek</h4>
       <p>A tragic street drama. Lock in your copy before release.</p>
 
-      <button class="btn primary" onclick="checkout('summer-kings')">
-        Preorder - $25.99
+      <button class="btn primary" onclick="addToCart('summer-kings', 'Summer Kings', 25.99)">
+        Add to Cart - $25.99
       </button>
     </div>
 
@@ -50,6 +51,10 @@
   <p><strong>Paris M. France</strong></p>
   <p>Official Preorder Page</p>
 </footer>
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
 
 <!-- CHECKOUT FUNCTION -->
 <script>
