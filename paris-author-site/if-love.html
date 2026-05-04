@@ -35,7 +35,7 @@
 
     <div class="btn-row">
       <button class="btn primary" onclick="addToCart('if-love', 'If Love Could Talk', 15.99)">
-        Add to Cart - $15.99
+        Add to Cart - <span data-price="if-love"></span>
       </button>
 
       <a href="cart.html" class="btn secondary">View Cart</a>
@@ -53,6 +53,10 @@
   <p><strong>If Love Could Talk</strong></p>
   <p>Paris M. France</p>
 </footer>
+
+<script src="prices.js"></script>
+<script src="script.js"></script>
+<script src="navbar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth.js"></script>

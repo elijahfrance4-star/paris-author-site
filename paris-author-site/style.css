@@ -1146,3 +1146,31 @@ img {
     margin: 0 auto;
   }
 }
+.price-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  white-space: nowrap; /* prevents line breaks */
+  font-size: 16px;
+  font-weight: 600;
+
+  padding: 18px 28px;
+}
+
+.price-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+
+  letter-spacing: 1px;
+}
+.price-btn {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+
+.price-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.9);
+}
