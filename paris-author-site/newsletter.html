@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter | Paris M. France</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main class="auth-page">
+
+  <div class="auth-box cinematic">
+    <h1>Join the Inner Circle</h1>
+    <p class="tagline">This is where the real ones stay.</p>
+    <p>
+      Get updates, exclusive drops, and early access to every release.
+    </p>
+
+    <input id="email" placeholder="Enter your email" />
+
+    <button class="btn primary" onclick="joinNewsletter()">
+      Join Newsletter
+    </button>
+
+    <p id="message"></p>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="navbar.js"></script>
+
+<script>
+async function joinNewsletter() {
+  const email = document.getElementById("email").value;
+
+  const { error } = await supabaseClient
+    .from("newsletter")
+    .insert([{ email }]);
+
+  const msg = document.getElementById("message");
+
+  if (error) {
+    msg.textContent = "You're already in or something went wrong.";
+  } else {
+    msg.textContent = "You're in. Welcome to House of France.";
+  }
+}
+</script>
+
+</body>
+</html>
