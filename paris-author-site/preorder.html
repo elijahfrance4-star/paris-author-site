@@ -27,21 +27,7 @@ async function checkout(book) {
 </script>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="logo">Paris M. <span>France</span></a>
-  <div class="menu-wrap">
-    <button class="menu-button">Menu</button>
-    <div class="dropdown">
-      <a href="index.html">Home</a>
-      <a href="books.html">Books</a>
-      <a href="programs.html">Program List</a>
-      <a href="notifications.html">Notifications</a>
-      <a href="subscriptions.html">My Subscriptions</a>
-      <a href="ways-to-pay.html">Ways to Pay</a>
-      <a href="preorder.html">Pre-order</a>
-    </div>
-  </div>
-</nav>
+<div id="navbar-placeholder"></div>
 
 <header class="page-hero">
   <div>
@@ -87,5 +73,9 @@ async function checkout(book) {
     alert("Checkout error: " + data.error);
   }
 }
+
+<script src="script.js"></script>
+<script src="navbar.js"></script>
 </script>
 </main>
+<body>

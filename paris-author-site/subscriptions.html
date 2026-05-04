@@ -8,21 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="logo">Paris M. <span>France</span></a>
-  <div class="menu-wrap">
-    <button class="menu-button">Menu</button>
-    <div class="dropdown">
-      <a href="index.html">Home</a>
-      <a href="books.html">Books</a>
-      <a href="programs.html">Program List</a>
-      <a href="notifications.html">Notifications</a>
-      <a href="subscriptions.html">My Subscriptions</a>
-      <a href="ways-to-pay.html">Ways to Pay</a>
-      <a href="preorder.html">Preorder</a>
-    </div>
-  </div>
-</nav>
+<div id="navbar-placeholder"></div>
 
 <header class="page-hero">
   <div>
@@ -31,3 +17,90 @@
     <p>Join House of France for free short story every other month, acess to all programs, and exclusive special edition copies of all books that have speciall edition releases.</p>
   </div>
 </header>
+
+<main class="section page-shell">
+  <div class="subscription-grid">
+
+    <div class="subscription-card">
+      <span class="badge">Free</span>
+      <h2>Newsletter</h2>
+      <p>For readers who want updates and announcements from Paris M. France.</p>
+
+      <ul>
+        <li>Book release updates</li>
+        <li>Preorder announcements</li>
+        <li>Behind-the-scenes notes</li>
+        <li>Member-only news</li>
+      </ul>
+
+      <a href="notifications.html" class="btn secondary">Join Free</a>
+    </div>
+
+    <div class="subscription-card featured">
+      <span class="badge">Most Popular</span>
+      <h2>House of France</h2>
+      <p class="price">$50</p>
+      <p>For readers and writers who want stories, programs, and deeper access.</p>
+
+      <ul>
+        <li>Everything in the free newsletter</li>
+        <li>Free short story every 2 months</li>
+        <li>Access to all author programs</li>
+        <li>Exclusive member updates</li>
+      </ul>
+
+     <button class="btn primary" onclick="subscribe('prod_URwyLwH3flb3aT')">
+       Join House of France - $50/mo
+     </button>
+    </div>
+
+    <div class="subscription-card">
+      <span class="badge">Premium</span>
+      <h2>The M Vault</h2>
+      <p class="price">$100</p>
+      <p>The highest tier for readers who want every major benefit and collector access.</p>
+
+      <ul>
+        <li>Everything in House of France</li>
+        <li>Free special edition of each book</li>
+        <li>First access to new releases</li>
+        <li>Bonus content and private drops</li>
+      </ul>
+
+      <button class="btn primary" onclick="subscribe('prod_URwywHwn3J3tWS')">
+        Join The M List - $100/mo
+      </button>
+    </div>
+
+  </div>
+</main>
+<!-- SUPABASE FIRST -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+
+<script>
+async function subscribe(priceId) {
+  const res = await fetch("/.netlify/functions/create-subscription", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ priceId })
+  });
+
+  const data = await res.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Subscription error: " + (data.error || "Checkout failed"));
+  }
+}
+</script>
+
+<!-- YOUR SITE SCRIPTS -->
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+</body>
+</html>

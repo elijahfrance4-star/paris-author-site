@@ -8,21 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="logo">Paris M. <span>France</span></a>
-  <div class="menu-wrap">
-    <button class="menu-button">Menu</button>
-    <div class="dropdown">
-      <a href="index.html">Home</a>
-      <a href="books.html">Books</a>
-      <a href="programs.html">Program List</a>
-      <a href="notifications.html">Notifications</a>
-      <a href="subscriptions.html">My Subscriptions</a>
-      <a href="ways-to-pay.html">Ways to Pay</a>
-      <a href="preorder.html">Preorder</a>
-    </div>
-  </div>
-</nav>
+<div id="navbar-placeholder"></div>
 
 <header class="page-hero">
   <div>
@@ -34,19 +20,50 @@
 </header>
 
 <main class="section page-shell">
-  <div class="card-grid">
-    <div class="card">
-      <h3>Cashapp $ParisMFrance</h3>
-      <p>Send money directly to $ParisMFrance for book purchases and program enrollments. I do ask if you do use cashapp you send a message with the amount and the purpose of the payment. Thank you!</p>
+  <div class="payment-grid">
+
+    <div class="payment-card">
+      <h3>💵 Cash App</h3>
+      <p>Send payments directly to <strong>$ParisMFrance</strong> for book purchases or program enrollments.</p>
+      <p>Please include your name, email, and what you are paying for in the note.</p>
     </div>
-    <div class="card">
-  <div class="card-grid">
-    <div class="card">
-      <h3>Venmo @Paris-M-France</h3>
-      <p>Use Venmo to pay for books and programs by sending payments to @Paris-M-France. Please include a note with your payment indicating the purpose of the transaction.</p>
+
+    <div class="payment-card">
+    <h3>📲 Venmo</h3>
+      <p>Use <strong>@Paris-M-France</strong> to send payment for books, programs, or preorder support.</p>
+      <p>Please include your name, email, and purchase reason.</p>
     </div>
-    <div class="card">
-      <h3>Credit/Debit Cards</h3>
-      <p>We accept all major credit and debit cards for online purchases. Simply enter your card details at checkout to complete your purchase securely.</p>  
+
+    <div class="payment-card highlight">
+  <span class="badge">Recommended</span>
+  <h3>💳 Credit / Debit Cards</h3>
+  <p>We accept major credit and debit cards through secure Stripe checkout.</p>
+</div>
+
+    <div class="payment-card">
+      <h3>💸 PayPal</h3>
+      <p>Send payments to <strong>paris.m.france@gmail.com</strong> for book purchases or program enrollments.</p>
+      <p>Please include your name, email, and what you are paying for in the note.</p>
     </div>
+  </div>
+
+  <div class="payment-note">
+    <h2>Secure Payment Notice</h2>
+    <p>
+      Online card payments are processed securely through Stripe. Paris M. France does not store your card information.
+    </p>
+  </div>
+
+  <div class="payment-note">
+    <h2>Preorder Policy</h2>
+    <p>
+      Preorders secure your copy before release. Delivery updates will be sent by email once the book is ready.
+    </p>
+  </div>
+</main>
+
+    <script src="script.js"></script>
+<script src="navbar.js"></script>
+  </div>
+</body>
     
