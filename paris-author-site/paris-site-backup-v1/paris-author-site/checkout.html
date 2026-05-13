@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Checkout</h1>
+
+<div id="orderSummary"></div>
+
+<button>Pay Now (Stripe/Gumroad later)</button>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("orderSummary").innerHTML = cart.join("<br>");
+</script>
+
+</body>
+</html>

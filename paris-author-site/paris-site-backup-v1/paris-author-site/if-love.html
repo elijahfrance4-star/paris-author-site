@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>If Love Could Talk | Paris M. France</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<a href="cart.html" class="btn secondary">
+  View Cart
+</a>
+<main class="book-hero">
+  <div class="book-hero-cover-wrap">
+    <img class="book-hero-cover" src="images/if-talk.png" alt="If Love Could Talk cover" />
+  </div>
+
+  <div class="book-hero-text">
+    <div class="kicker">Dark Romance Tragedy</div>
+    <h1>If Love Could Talk</h1>
+    <h2>Book 1</h2>
+
+    <div class="meta-row">
+      <span class="meta-pill">Romance</span>
+      <span class="meta-pill">Tragedy</span>
+      <span class="meta-pill">Short Story</span>
+      <span class="meta-pill">Coming Soon</span>
+    </div>
+
+    <p>If love had a voice, it would speak through every missed call, every unsent message, every quiet moment where two hearts wanted to reach each other but pride, pain, and timing stood in the way.</p>
+
+    <div class="btn-row">
+      <a href="preorder.html" class="btn primary">Preorder</a>
+      <a href="books.html" class="btn secondary">Back To Books</a>
+      <button class="btn primary" onclick="checkout('if-love')">
+  <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); addToCart('if-love', 'If Love Could Talk', 15.99)">
+  Add to Cart - $15.99
+</button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p><strong>If Love Could Talk</strong></p>
+  <p>Paris M. France</p>
+</footer>
+
+<script>
+async function checkout(book) {
+  const response = await fetch("/.netlify/functions/create-checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ book })
+  });
+
+  const data = await response.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Checkout error: " + data.error);
+  }
+}
+
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
+</script>
+<script src="script.js"></script>
+</body>
+<a href="cart.html" class="btn secondary">View Cart</a>
+</html>
+
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+  </div>
+</body>
+</html>
