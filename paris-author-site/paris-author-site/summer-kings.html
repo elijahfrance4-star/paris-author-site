@@ -10,9 +10,6 @@
 
 <div id="navbar-placeholder"></div>
 
-<a href="cart.html" class="btn secondary">
-  View Cart
-</a>
 <main class="book-hero">
   <div class="book-hero-cover-wrap">
     <img class="book-hero-cover" src="images/leek.png" alt="Summer Kings cover" />
@@ -30,48 +27,41 @@
       <span class="meta-pill">Coming Soon</span>
     </div>
 
-    <p>It was supposed to be the summer they ran the city. One wrong ride, one impulsive decision, and one betrayal turns brotherhood into a war nobody walks away from clean.</p>
+    <p>
+      It was supposed to be the summer they ran the city. One wrong ride,
+      one impulsive decision, and one betrayal turns brotherhood into a war
+      nobody walks away from clean.
+    </p>
 
     <div class="btn-row">
-      <a href="preorder.html" class="btn primary">Preorder</a>
+      <button class="btn primary" onclick="addToCart('summer-kings', 'Summer Kings', 25.99)">
+        Add to Cart - <span data-price="summer-kings"></span>
+      </button>
+
+      <a href="cart.html" class="btn secondary">View Cart</a>
       <a href="books.html" class="btn secondary">Back To Books</a>
-      <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); checkout('summer-kings')">
- <button class="btn primary" onclick="event.preventDefault(); event.stopPropagation(); addToCart('summer-kings', 'Summer Kings', 25.99)">
-      Add to Cart - $25.99
-     </button>
     </div>
   </div>
 </main>
+
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
 
 <footer class="footer">
   <p><strong>Summer Kings</strong></p>
   <p>Paris M. France</p>
 </footer>
 
-<script>
-async function checkout(book) {
-  const response = await fetch("/.netlify/functions/create-checkout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ book })
-  });
-
-  const data = await response.json();
-
-  if (data.url) {
-    window.location.href = data.url;
-  } else {
-    alert("Checkout error: " + data.error);
-  }
-}
-
-<div id="cart-toast" class="cart-toast">
-  <strong>Added to cart</strong>
-  <p id="cart-toast-text">Item added successfully.</p>
-</div>
-</script>
+<script src="prices.js"></script>
 <script src="script.js"></script>
+<script src="navbar.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
 </body>
 </html>

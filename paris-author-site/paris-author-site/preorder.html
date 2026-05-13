@@ -6,6 +6,57 @@
   <title>Preorder | Paris M. France</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<header class="page-hero">
+  <div>
+    <div class="kicker">Author Academy</div>
+    <h1>Pre-order</h1>
+    <p>
+      Secure your copy early and be the first to experience new releases from Paris M. France.
+    </p>
+    <a href="cart.html" class="btn secondary">View Cart</a>
+  </div>
+</header>
+
+<main class="section page-shell">
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>If Love Could Talk</h3>
+      <h4>Book 1</h4>
+      <p>Pre-order now and be first to experience this dark romance tragedy.</p>
+
+      <button class="btn primary" onclick="addToCart('if-love', 'If Love Could Talk', 15.99)">
+        Add to Cart - $15.99
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Summer Kings</h3>
+      <h4>Leek</h4>
+      <p>A tragic street drama. Lock in your copy before release.</p>
+
+      <button class="btn primary" onclick="addToCart('summer-kings', 'Summer Kings', 25.99)">
+        Add to Cart - $25.99
+      </button>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p><strong>Paris M. France</strong></p>
+  <p>Official Preorder Page</p>
+</footer>
+<div id="cart-toast" class="cart-toast">
+  <strong>Added to cart</strong>
+  <p id="cart-toast-text">Item added successfully.</p>
+</div>
+
+<!-- CHECKOUT FUNCTION -->
 <script>
 async function checkout(book) {
   const response = await fetch("/.netlify/functions/create-checkout", {
@@ -21,61 +72,19 @@ async function checkout(book) {
   if (data.url) {
     window.location.href = data.url;
   } else {
-    alert("Checkout error: " + data.error);
+    alert("Checkout error: " + (data.error || "Failed"));
   }
 }
 </script>
-<body>
 
-<div id="navbar-placeholder"></div>
-
-<header class="page-hero">
-  <div>
-    <div class="kicker">Author Academy</div>
-    <h1>Pre-order</h1>
-    <p>Pre-order your copies of upcoming books and be the first to know when they're available.</p>
-  </div>
- <button class="btn primary" onclick="checkout('if-love')">
-  Preorder If Love Could Talk - $4.99
-</button>
-
-<button class="btn primary" onclick="checkout('summer-kings')">
-  Preorder Summer Kings - $9.99
-</button>
-</header>
-
-<main class="section page-shell">
-  <div class="card-grid">
-    <div class="card">
-      <h3>Upcoming Book Preorders</h3>
-      <p>Pre-order Summer Kings: Leek now!</p>
-    </div>
-    <div class="card">
-      <h3>Exclusive Pre-order Content</h3>
-      <p>Pre-order now to receive exclusive content and early access to special edition copies.</p>
-    </div>
-  </div>
-  <script>
-async function checkout(book) {
-  const response = await fetch("/.netlify/functions/create-checkout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ book })
-  });
-
-  const data = await response.json();
-
-  if (data.url) {
-    window.location.href = data.url;
-  } else {
-    alert("Checkout error: " + data.error);
-  }
-}
-
+<script src="prices.js"></script>
 <script src="script.js"></script>
 <script src="navbar.js"></script>
-</script>
-</main>
-<body>
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+<script src="navbar.js"></script>
+
+</body>
+</html>
